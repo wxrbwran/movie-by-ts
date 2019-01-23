@@ -6,7 +6,7 @@
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
-    <h3>Installed CLI Plugins</h3>
+    <h3 @click="greet">Installed CLI Plugins</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
@@ -38,6 +38,18 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+    // computed
+    get computedMsg() {
+        return 'computed ' + this.msg;
+    }
+    // method
+    public greet() {
+        console.log('greeting: ' + this.msg);
+    }
+    // lifecycle hook
+    private mounted() {
+        this.greet();
+    }
 }
 </script>
 
@@ -53,8 +65,8 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
+	a {
+		color: #42b983;
+	}
 }
 </style>
