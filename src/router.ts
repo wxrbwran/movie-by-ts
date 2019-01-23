@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-
 Vue.use(Router);
-
+// tslint:disable space-in-parens
 export default new Router({
   routes: [
     {
@@ -21,3 +20,4 @@ export default new Router({
     },
   ],
 });
+

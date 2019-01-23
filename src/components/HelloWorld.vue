@@ -38,18 +38,18 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
-    // computed
-    get computedMsg() {
-        return 'computed ' + this.msg;
-    }
-    // method
-    public greet() {
-        console.log('greeting: ' + this.msg);
-    }
-    // lifecycle hook
-    private mounted() {
-        this.greet();
-    }
+  // computed
+  get computedMsg() {
+    return `computed${this.msg}`;
+  }
+  // method
+  public greet() {
+    console.log(`greeting${this.msg}`);
+  }
+  // lifecycle hook
+  private mounted() {
+    this.greet();
+  }
 }
 </script>
 

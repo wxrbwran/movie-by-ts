@@ -1,5 +1,15 @@
+
+console.log(`${process.env.NODE_ENV}`);
 module.exports = {
-    configureWebpack: config => {
-        console.log(`正在运行在${process.env.NODE_ENV}环境中`);
-    }
-};
+    configureWebpack: {
+        resolve: {
+            extensions: ['.mjs', '.js', '.jsx', '.vue', '.json', '.wasm', 'ts'],
+            alias: {
+                'assets': '@/assets',
+                'components': '@/components',
+                'views': '@/views',
+            }
+        }
+    },
+}
+
