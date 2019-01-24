@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export interface Irating {
   max: number;
   average: string;
@@ -31,3 +33,4 @@ export interface Imovie {
 export interface IState {
   movieList?: Imovie[];
 }
+
