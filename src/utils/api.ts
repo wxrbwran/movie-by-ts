@@ -32,9 +32,7 @@ const removePending = (config: any) => {
   }
 };
 
-const api: {
-  [attr: string]: any;
-} = axios.create(config);
+const api = axios.create(config);
 
 // 添加请求拦截器
 api.interceptors.request.use(
@@ -63,17 +61,21 @@ api.interceptors.response.use(
   },
 );
 
-
-
 const req = async (option:IAjaxOption, vm: any) => {
   try {
     let res = null;
     switch (option.method) {
+      case 'post' :
+        res = await api.post(option.url, option.params); break;
+      case 'patch' :
+        res = await api.patch(option.url, option.params); break;
+      case 'delete' :
+        res = await api.delete(option.url, option.params); break;
+      case 'put' :
+        res = await api.put(option.url, option.params); break;
       case 'get' :
-        res = await api.get(option.url, { params: option.params });
-        break;
-      default :
-        res = await api[option.method](option.url, option.params);
+      default:
+        res = await api.get(option.url, { params: option.params }); break;
     }
     option.success.call(vm, res);
   } catch (e) {
@@ -103,4 +105,18 @@ methods.forEach((method) => {
 });
 
 
-export default api;
+const apiGet = ajaxMethods.ajaxGet;
+const apiPost = ajaxMethods.ajaxPost;
+const apiPatch = ajaxMethods.ajaxPatch;
+const apiDelete = ajaxMethods.ajaxDelete;
+const apiPut = ajaxMethods.ajaxPut;
+
+export {
+  api,
+  req,
+  apiGet,
+  apiPost,
+  apiPatch,
+  apiDelete,
+  apiPut,
+};
