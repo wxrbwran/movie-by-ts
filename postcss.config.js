@@ -1,5 +1,12 @@
 module.exports = {
-  plugins: {
-    autoprefixer: {}
+  "plugins": {
+    // to edit target browsers: edit .browserslistrc file under project root dir
+    "autoprefixer": {
+      "browsers": ['Android >= 4.0', 'iOS >= 7']
+    },
+    "postcss-pxtorem": {
+      "rootValue": 16,
+      "propList": ["*"]
+    }
   }
 }
